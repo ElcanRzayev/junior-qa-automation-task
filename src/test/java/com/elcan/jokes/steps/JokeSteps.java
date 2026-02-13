@@ -27,4 +27,29 @@ public class JokeSteps {
     public void iRequestARandomJoke() {
         response = client.getRandomJoke();
 
+
+
     }
+    @When("I request a joke with id {int}")
+    public void iRequestAJokeWithId(int id) {
+        response = client.getJokeById(id);
+    }
+    @Then("the response status should be {int}")
+    public void theResponseStatusShouldBe(int expectedStatus) {
+        assertNotNull("Response is null - request was not executed", response);
+        assertEquals("Unexpected HTTP status code", expectedStatus, response.statusCode());
+    }
+    @Then("the response should contain field {string}")
+    public void theResponseShouldContainField(String fieldName) {
+        JsonPath json = response.jsonPath();
+        Object value = json.get(fieldName);
+
+        assertNotNull("Expected field '" + fieldName + "' to exist, but it was null/missing", value);
+
+        // If it's a string, ensure it's not empty
+        if (value instanceof String) {
+            assertFalse("Expected field '" + fieldName + "' not to be empty",
+                    ((String) value).trim().isEmpty());
+        }
+    }
+}
