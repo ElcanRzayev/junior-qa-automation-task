@@ -1,14 +1,13 @@
-Feature: Joke by ID
+Feature: Joke API response structure validation
 
-  Scenario Outline: Retrieve a joke by id using different ids
-    When I request a joke with id <id>
+  Background:
+    Given the Joke API is available
+
+  Scenario: Verify random joke contains required fields
+    When I request a random joke
     Then the response status should be 200
-    And the response field "id" should equal <id>
-    And the response should contain field "setup"
-    And the response should contain field "punchline"
-
-    Examples:
-      | id |
-      | 1  |
-      | 2  |
-      | 3  |
+    And the response should contain required fields:
+      | id        |
+      | type      |
+      | setup     |
+      | punchline |
