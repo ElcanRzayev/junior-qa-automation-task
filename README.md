@@ -81,3 +81,19 @@ The structure follows a clean separation between:
 - Test logic
 - API communication
 - Feature descriptions
+
+## AI Usage Disclosure
+
+AI tools were used as supportive assistance during development.
+
+Specifically:
+- Help with refining some Cucumber step implementations.
+- Minor formatting improvements in documentation.
+- Clarifying error messages during debugging.
+
+All project structure decisions, API design, test logic, and validation strategy were designed and implemented by me.
+
+I reviewed, understood, and adjusted all generated suggestions to ensure they align with the task requirements and my approach.
+
+The overall solution reflects my own understanding of API testing, BDD structure, and automation practices.
+
